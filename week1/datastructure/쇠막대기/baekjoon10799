@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+void solution();
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    solution();
+    return 0;
+}
+void solution(){
+    string str;
+    cin >> str;
+    int cnt=0,stcnt=0;
+    for (int i = 0; i < str.size(); i++) {
+        if(str[i]=='('&& str[i+1]==')'){//레이저를 발사할때 처리
+            cnt+=stcnt;
+            i++;
+        }
+        else if(str[i]=='('){//쇠막대기 시작부분 카운트
+            stcnt++;
+        }
+        else if(str[i]==')'){//쇠막대기가 끝나는 부분 카운트
+            if(stcnt>=1){
+                stcnt--;
+            }
+            cnt++;
+        }
+    }
+    cout << cnt;
+
+}
